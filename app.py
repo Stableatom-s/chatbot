@@ -28,92 +28,92 @@ college_info = {
 
 "doctor":{
 "keywords":["doctor","medical","clinic"],
-"answer":"College Doctor\nDr Sheetal S Agale\nPhone: 9594907410\nAvailable: 9:45 AM – 4:45 PM"
+"answer":"🏥 College Doctor\nDr Sheetal S Agale\n📞 9594907410\n🕒 9:45 AM – 4:45 PM"
 },
 
 "labs":{
 "keywords":["lab","labs","it lab"],
-"answer":"IT Department Labs:\n• Centre of Excellence\n• Data Science\n• Software\n• Database Engineering\n\nLab Assistants:\nPriyanka Padval\nPriyanka Patil\nNilam Shinde\nManoj Patode"
+"answer":"💻 IT Department Labs:\n• Centre of Excellence\n• Data Science\n• Software\n• Database Engineering\n\nLab Assistants:\nPriyanka Padval\nPriyanka Patil\nNilam Shinde\nManoj Patode"
 },
 
 "academic":{
 "keywords":["academic","coordinator","dean"],
-"answer":"Academic Coordinator: Mrs Shantiguru Madam\nDean Academics: Dr Preeti Patil"
+"answer":"🎓 Academic Administration\nAcademic Coordinator: Mrs Shantiguru Madam\nDean Academics: Dr Preeti Patil"
 },
 
 "placement":{
 "keywords":["placement","tpo","job"],
-"answer":"Training & Placement Coordinator\nShital Borse Madam\n\nEmails:\ntpo@dypcoeakurdi.ac.in\nplacements@dypcoeakurdi.ac.in"
+"answer":"💼 Training & Placement\nCoordinator: Shital Borse Madam\n\nEmails:\ntpo@dypcoeakurdi.ac.in\nplacements@dypcoeakurdi.ac.in"
 },
 
 "nba":{
 "keywords":["nba"],
-"answer":"NBA Coordinator: Amita Madam"
+"answer":"NBA Coordinator\nAmita Madam"
 },
 
 "alumni":{
 "keywords":["alumni"],
-"answer":"Alumni Coordinator: Amita Madam"
+"answer":"Alumni Coordinator\nAmita Madam"
 },
 
 "technician":{
-"keywords":["technician","internet","electric","wifi issue"],
-"answer":"Technician\nVinay Nangare\nHandles Internet and Electrical Support"
+"keywords":["technician","internet issue","electric"],
+"answer":"🔧 Technician Support\nVinay Nangare\nHandles Internet and Electrical issues"
 },
 
 "wifi":{
 "keywords":["wifi","internet access"],
-"answer":"WiFi Access Instructions:\nVisit http://172.0.0.1\nUse your mobile number as both username and password."
+"answer":"📶 WiFi Access Instructions\nVisit: http://172.0.0.1\nUse your mobile number as both username and password."
 },
 
 "library":{
 "keywords":["library","reading room"],
-"answer":"Library Location:\nD Building\n2nd Floor"
+"answer":"📚 Library Location\nD Building\n2nd Floor"
 },
 
 "sports":{
 "keywords":["sports","ground"],
-"answer":"Sports Department\nLocation: A Building Entrance Ground Floor\nOfficer: Dr Abhaji Mane Sir"
+"answer":"🏀 Sports Department\nLocation: A Building Entrance Ground Floor\nOfficer: Dr Abhaji Mane Sir"
 },
 
 "administration":{
 "keywords":["administration","student section","marksheet","scholarship","accounts"],
-"answer":"Administration Office\n\nStudent Section (documents / marksheet)\nSamrat Sir\n\nAdmission\nSalunke Sir\n\nScholarship\nWadkar Sir\n\nAccounts (fees)\nSantosh Sir\nRaju Sir"
+"answer":"🏢 Administration Office\n\nStudent Section (documents / marksheet)\nSamrat Sir\n\nAdmission\nSalunke Sir\n\nScholarship\nWadkar Sir\n\nAccounts (fees)\nSantosh Sir\nRaju Sir"
 },
 
 "admission":{
 "keywords":["admission","admission contact"],
-"answer":"Admission Incharge\nDr K T Jadhav\n\nAdmission Contact Numbers:\n9373775038\n9607957618\n9075345011\n9158195999\n8208018509\n9607957620"
+"answer":"📞 Admission Incharge\nDr K T Jadhav\n\nAdmission Contact Numbers:\n9373775038\n9607957618\n9075345011\n9158195999\n8208018509\n9607957620"
 },
 
 "erp":{
 "keywords":["erp","attendance","assignment","fees","bonafide","lc","hostel","syllabus"],
-"answer":"ERP Portal\nhttps://erp.dypakurdipune.edu.in/\n\nUse ERP for:\nAttendance\nAssignments\nFees\nBonafide\nLC\nHostel\nSyllabus"
+"answer":"🖥 ERP Portal\nhttps://erp.dypakurdipune.edu.in/\n\nUse ERP for:\nAttendance\nAssignments\nFees\nBonafide\nLC\nHostel\nSyllabus"
 },
 
 "results":{
 "keywords":["result","exam","sppu"],
-"answer":"SPPU Result Portal\nhttps://sim.unipune.ac.in/SIM_APP/"
+"answer":"📊 SPPU Results Portal\nhttps://sim.unipune.ac.in/SIM_APP/"
 },
 
 "itesa":{
 "keywords":["itesa","club"],
-"answer":"IT Department Student Club\nITESA\nInstagram:\nhttps://www.instagram.com/itesa.dyp/"
+"answer":"🎓 IT Department Student Club\nITESA\nInstagram:\nhttps://www.instagram.com/itesa.dyp/"
 },
 
 "grievance":{
 "keywords":["grievance","complaint"],
-"answer":"Grievance Redressal Committee\nChairperson: Dr P Malathi\nContact: 9823152302"
+"answer":"⚖ Grievance Redressal Committee\nChairperson: Dr P Malathi\n📞 9823152302"
 },
 
 "transport":{
 "keywords":["bus","transport"],
-"answer":"College does not provide bus transport."
+"answer":"🚫 College does not provide bus transport."
 },
 
 "website":{
 "keywords":["website","college website"],
-"answer":"College Website\nhttps://www.dypcoeakurdi.ac.in/"
+"answer":"🌐 College Website\nhttps://www.dypcoeakurdi.ac.in/"
 }
 
 }
@@ -145,7 +145,7 @@ def get_timetable(day, class_div):
 
     row = row.iloc[0].dropna()
 
-    reply = f"{day.upper()} TIMETABLE ({class_div.upper()})\n\n"
+    reply = f"📅 {day.upper()} TIMETABLE ({class_div.upper()})\n\n"
 
     for time,subject in row.items():
         if time!="DAY/Time":
@@ -178,14 +178,66 @@ st.set_page_config(page_title="IT Genie",page_icon="🤖")
 
 st.title("🤖 IT Genie Chatbot")
 
-st.caption("Ask about timetable or college information")
+st.caption("Assistant for IT Department – D Y Patil College of Engineering Akurdi")
 
 
-# Chat history
+# ----------------------------
+# INFORMATION MENU
+# ----------------------------
+
+st.subheader("What information you can ask")
+
+st.markdown("""
+### 📚 College Information
+• Library location  
+• IT Department labs  
+• Academic coordinator  
+• Dean academics  
+
+### 🏫 Student Services
+• ERP portal (attendance, assignments, fees)  
+• Bonafide & LC information  
+• SPPU results portal  
+
+### 👨‍💼 Administration
+• Student section (marksheet & documents)  
+• Admission office  
+• Scholarship office  
+• Accounts / fees  
+
+### 🏥 Campus Facilities
+• College doctor  
+• WiFi access instructions  
+• Technician support  
+• Sports department  
+
+### 🎓 Department Activities
+• ITESA student club  
+• Alumni coordinator  
+• NBA coordinator  
+
+### 📞 Contact Information
+• Admission contacts  
+• College reception  
+• College website  
+
+### 📅 Timetable
+Type like:
+
+`monday te a`
+
+`wednesday se b`
+""")
+
+
+# ----------------------------
+# CHAT HISTORY
+# ----------------------------
+
 if "messages" not in st.session_state:
     st.session_state.messages=[{
         "role":"assistant",
-        "content":"Hello! Ask about timetable (example: monday te a), library, ERP, placements, WiFi or doctor."
+        "content":"Hello! Ask me about timetable, ERP, library, WiFi, placements, doctor or college information."
     }]
 
 
@@ -194,28 +246,11 @@ for msg in st.session_state.messages:
         st.markdown(msg["content"])
 
 
-# Quick buttons
-col1,col2,col3,col4 = st.columns(4)
+# ----------------------------
+# USER INPUT
+# ----------------------------
 
-quick=None
-
-if col1.button("Library"):
-    quick="library"
-
-if col2.button("Placement"):
-    quick="placement"
-
-if col3.button("WiFi"):
-    quick="wifi"
-
-if col4.button("Doctor"):
-    quick="doctor"
-
-
-# User input
-typed = st.chat_input("Ask something...")
-prompt = typed or quick
-
+prompt = st.chat_input("Ask something...")
 
 if prompt:
 
@@ -228,7 +263,7 @@ if prompt:
 
     response=None
 
-    # Search college information
+    # Search college info
     response = search_info(user_input)
 
     # Timetable detection
@@ -248,7 +283,7 @@ if prompt:
         if found_day and found_class:
             response=get_timetable(found_day,found_class)
 
-    # Default response
+    # Default message
     if not response:
         response="Try asking: monday te a, library, ERP, placement, WiFi, doctor."
 
