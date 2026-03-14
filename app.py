@@ -1,17 +1,12 @@
 import streamlit as st
 import pandas as pd
-import json
 import os
 
-# -----------------------------
-# LOAD KNOWLEDGE BASE
-# -----------------------------
-with open("knowledge_base.json", "r") as f:
-    KB = json.load(f)
 
-# -----------------------------
+# ---------------------------
 # TIMETABLE FILE MAPPING
-# -----------------------------
+# ---------------------------
+
 timetables = {
     "se a": "SE_A.csv", "sy a": "SE_A.csv",
     "se b": "SE_B.csv", "sy b": "SE_B.csv",
@@ -24,122 +19,253 @@ timetables = {
     "be c": "BE_C.csv"
 }
 
-# -----------------------------
+
+# ---------------------------
+# COLLEGE INFORMATION
+# ---------------------------
+
+college_info = {
+
+"library": {
+"keywords": ["library","reading room","study"],
+"answer": "📚 Library\nLocation: D Building, 2nd Floor"
+},
+
+"doctor": {
+"keywords": ["doctor","medical","clinic"],
+"answer": "🩺 College Doctor\nDr Sheetal S Agale\nPhone: 9594907410\nTime: 9:45 AM – 4:45 PM"
+},
+
+"sports": {
+"keywords": ["sports","ground","play"],
+"answer": "🏀 Sports Department\nLocation: A Building Ground Floor\nOfficer: Dr Abhaji Mane"
+},
+
+"placement": {
+"keywords": ["placement","tpo","job"],
+"answer": "💼 Training & Placement\nCoordinator: Shital Borse Madam"
+},
+
+"erp": {
+"keywords": ["erp","attendance","assignment","fees","bonafide","lc","hostel"],
+"answer": "ERP Portal\nhttps://erp.dypakurdipune.edu.in/\nUse it for attendance, assignments, fees, bonafide, LC, hostel."
+},
+
+"results": {
+"keywords": ["result","exam","sppu"],
+"answer": "SPPU Results Portal\nhttps://sim.unipune.ac.in/SIM_APP/"
+},
+
+"technician": {
+"keywords": ["internet","wifi","electric","technician"],
+"answer": "🔧 Technician\nVinay Nangare\nInternet & Electrical Support"
+},
+
+"administration": {
+"keywords": ["marksheet","document","student section","scholarship","accounts"],
+"answer": """
+Administration Office
+
+Student Section – Samrat Sir  
+Admission – Salunke Sir  
+Scholarship – Wadkar Sir  
+Accounts – Santosh Sir, Raju Sir
+"""
+},
+
+"itesa": {
+"keywords": ["itesa","club","it department"],
+"answer": "IT Department Student Club\nITESA\nInstagram: https://www.instagram.com/itesa.dyp/"
+},
+
+"contact": {
+"keywords": ["contact","phone","college number"],
+"answer": """
+D Y Patil College of Engineering
+Sector 29 Nigdi Pradhikaran
+Akurdi Pune 411044
+
+Reception
+020-27653054 / 020-27653058
+
+Website
+https://www.dypcoeakurdi.ac.in/
+"""
+}
+
+}
+
+
+# ---------------------------
 # TIMETABLE FUNCTION
-# -----------------------------
+# ---------------------------
+
 def get_timetable(day, class_div):
 
     csv_file = timetables.get(class_div)
 
     if not csv_file:
-        return "I couldn't find that class."
+        return "Class not found."
 
     if not os.path.exists(csv_file):
-        return f"❌ Timetable file {csv_file} not found."
+        return f"{csv_file} not found."
 
     df = pd.read_csv(csv_file)
 
     if "DAY/Time" not in df.columns:
         return "Timetable format incorrect."
 
-    day_data = df[df["DAY/Time"].str.lower() == day.lower()]
+    row = df[df["DAY/Time"].str.lower() == day]
 
-    if day_data.empty:
+    if row.empty:
         return f"No classes on {day}."
 
-    schedule = day_data.iloc[0].dropna()
+    row = row.iloc[0].dropna()
 
-    reply = f"📅 **{day.upper()} TIMETABLE ({class_div.upper()})**\n\n"
+    reply = f"📅 {day.upper()} TIMETABLE ({class_div.upper()})\n\n"
 
-    for time, subject in schedule.items():
+    for time, subject in row.items():
         if time != "DAY/Time":
-            reply += f"**{time}** → {subject}\n\n"
+            reply += f"{time} → {subject}\n"
 
     return reply
 
 
-# -----------------------------
-# SEARCH KNOWLEDGE BASE
-# -----------------------------
-def search_kb(query):
+# ---------------------------
+# SEARCH COLLEGE INFO
+# ---------------------------
 
-    query = query.lower()
+def search_info(user_input):
 
-    for topic, data in KB.items():
+    for topic in college_info.values():
 
-        for keyword in data["keywords"]:
-            if keyword in query:
-                return data["answer"]
+        for keyword in topic["keywords"]:
+
+            if keyword in user_input:
+                return topic["answer"]
 
     return None
 
 
-# -----------------------------
+# ---------------------------
 # STREAMLIT UI
-# -----------------------------
-st.set_page_config(page_title="IT-Genie", page_icon="🤖")
+# ---------------------------
 
-st.title("🤖 IT-Genie Chatbot")
-st.caption("Ask me about college information or timetable.")
+st.set_page_config(page_title="IT Genie", page_icon="🤖")
 
-# Chat memory
+st.title("🤖 IT Genie Chatbot")
+
+st.caption("Ask about timetable or college information.")
+
+
+# ---------------------------
+# CHAT HISTORY
+# ---------------------------
+
 if "messages" not in st.session_state:
     st.session_state.messages = [{
         "role": "assistant",
-        "content": "Hello! Ask me about placements, ERP, library, sports, doctor, or timetable."
+        "content":
+"""Hello! I can help you with:
+
+• Timetable (example: monday te a)
+• Library
+• Doctor
+• ERP portal
+• Placements
+• Sports
+• Administration
+"""
     }]
 
-# Display chat
+
 for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
 
 
-# -----------------------------
-# USER INPUT
-# -----------------------------
-prompt = st.chat_input("Ask something...")
+# ---------------------------
+# QUICK BUTTONS
+# ---------------------------
+
+col1,col2,col3,col4 = st.columns(4)
+
+quick=None
+
+if col1.button("📚 Library"):
+    quick="library"
+
+if col2.button("💼 Placement"):
+    quick="placement"
+
+if col3.button("🏫 IT Dept"):
+    quick="itesa"
+
+if col4.button("🩺 Doctor"):
+    quick="doctor"
+
+
+# ---------------------------
+# INPUT
+# ---------------------------
+
+typed = st.chat_input("Type your question...")
+
+prompt = typed or quick
+
 
 if prompt:
 
-    st.session_state.messages.append({"role": "user", "content": prompt})
+    st.session_state.messages.append({"role":"user","content":prompt})
 
     with st.chat_message("user"):
         st.markdown(prompt)
 
     user_input = prompt.lower()
 
-    response = None
+    response=None
 
-    # ---- Knowledge Base ----
-    response = search_kb(user_input)
 
-    # ---- Timetable Logic ----
+    # SEARCH COLLEGE INFO
+    response = search_info(user_input)
+
+
+    # TIMETABLE DETECTION
     if not response:
 
-        found_day = None
-        found_class = None
+        found_day=None
+        found_class=None
 
         for day in ["monday","tuesday","wednesday","thursday","friday","saturday"]:
             if day in user_input:
-                found_day = day
-                break
+                found_day=day
 
         for cls in timetables:
             if cls in user_input:
-                found_class = cls
-                break
+                found_class=cls
 
         if found_day and found_class:
-            response = get_timetable(found_day, found_class)
+            response=get_timetable(found_day,found_class)
 
+
+    # DEFAULT MESSAGE
     if not response:
-        response = "I couldn't understand. Try asking about library, placements, ERP, or timetable."
+        response = """
+I didn't understand.
+
+Try asking:
+• monday te a
+• library
+• ERP
+• placement
+• doctor
+"""
+
 
     with st.chat_message("assistant"):
         st.markdown(response)
 
     st.session_state.messages.append({
-        "role": "assistant",
-        "content": response
+        "role":"assistant",
+        "content":response
     })
