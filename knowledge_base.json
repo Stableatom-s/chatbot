@@ -1,0 +1,41 @@
+{
+ "library": {
+  "keywords": ["library","reading room","study place"],
+  "answer": "📚 Library\nLocation: D Building, 2nd Floor"
+ },
+
+ "doctor": {
+  "keywords": ["doctor","medical","clinic"],
+  "answer": "🩺 College Doctor\nDr Sheetal S Agale\nPhone: 9594907410\nTime: 9:45 AM – 4:45 PM"
+ },
+
+ "sports": {
+  "keywords": ["sports","ground","play"],
+  "answer": "🏀 Sports Department\nLocation: A Building Ground Floor\nOfficer: Dr Abhaji Mane"
+ },
+
+ "placement": {
+  "keywords": ["placement","job","tpo","recruitment"],
+  "answer": "💼 Training & Placement\nCoordinator: Shital Borse Madam"
+ },
+
+ "erp": {
+  "keywords": ["erp","attendance","assignment","fees","bonafide","lc","hostel"],
+  "answer": "ERP Portal:\nhttps://erp.dypakurdipune.edu.in/"
+ },
+
+ "results": {
+  "keywords": ["result","exam","sppu"],
+  "answer": "SPPU Result Portal:\nhttps://sim.unipune.ac.in/SIM_APP/"
+ },
+
+ "technician": {
+  "keywords": ["internet","wifi","electric","technician"],
+  "answer": "🔧 Technician\nVinay Nangare\nHandles Internet and Electrical Support"
+ },
+
+ "itesa": {
+  "keywords": ["itesa","club","it department"],
+  "answer": "IT Department Student Club\nITESA\nInstagram: https://www.instagram.com/itesa.dyp/"
+ }
+}
