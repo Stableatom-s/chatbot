@@ -3,9 +3,9 @@ import pandas as pd
 import os
 
 
-# ---------------------------
-# TIMETABLE FILE MAPPING
-# ---------------------------
+# ----------------------------
+# TIMETABLE FILES
+# ----------------------------
 
 timetables = {
     "se a": "SE_A.csv", "sy a": "SE_A.csv",
@@ -20,85 +20,108 @@ timetables = {
 }
 
 
-# ---------------------------
-# COLLEGE INFORMATION
-# ---------------------------
+# ----------------------------
+# COLLEGE INFORMATION DATABASE
+# ----------------------------
 
 college_info = {
 
-"library": {
-"keywords": ["library","reading room","study"],
-"answer": "📚 Library\nLocation: D Building, 2nd Floor"
+"doctor":{
+"keywords":["doctor","medical","clinic"],
+"answer":"College Doctor\nDr Sheetal S Agale\nPhone: 9594907410\nAvailable: 9:45 AM – 4:45 PM"
 },
 
-"doctor": {
-"keywords": ["doctor","medical","clinic"],
-"answer": "🩺 College Doctor\nDr Sheetal S Agale\nPhone: 9594907410\nTime: 9:45 AM – 4:45 PM"
+"labs":{
+"keywords":["lab","labs","it lab"],
+"answer":"IT Department Labs:\n• Centre of Excellence\n• Data Science\n• Software\n• Database Engineering\n\nLab Assistants:\nPriyanka Padval\nPriyanka Patil\nNilam Shinde\nManoj Patode"
 },
 
-"sports": {
-"keywords": ["sports","ground","play"],
-"answer": "🏀 Sports Department\nLocation: A Building Ground Floor\nOfficer: Dr Abhaji Mane"
+"academic":{
+"keywords":["academic","coordinator","dean"],
+"answer":"Academic Coordinator: Mrs Shantiguru Madam\nDean Academics: Dr Preeti Patil"
 },
 
-"placement": {
-"keywords": ["placement","tpo","job"],
-"answer": "💼 Training & Placement\nCoordinator: Shital Borse Madam"
+"placement":{
+"keywords":["placement","tpo","job"],
+"answer":"Training & Placement Coordinator\nShital Borse Madam\n\nEmails:\ntpo@dypcoeakurdi.ac.in\nplacements@dypcoeakurdi.ac.in"
 },
 
-"erp": {
-"keywords": ["erp","attendance","assignment","fees","bonafide","lc","hostel"],
-"answer": "ERP Portal\nhttps://erp.dypakurdipune.edu.in/\nUse it for attendance, assignments, fees, bonafide, LC, hostel."
+"nba":{
+"keywords":["nba"],
+"answer":"NBA Coordinator: Amita Madam"
 },
 
-"results": {
-"keywords": ["result","exam","sppu"],
-"answer": "SPPU Results Portal\nhttps://sim.unipune.ac.in/SIM_APP/"
+"alumni":{
+"keywords":["alumni"],
+"answer":"Alumni Coordinator: Amita Madam"
 },
 
-"technician": {
-"keywords": ["internet","wifi","electric","technician"],
-"answer": "🔧 Technician\nVinay Nangare\nInternet & Electrical Support"
+"technician":{
+"keywords":["technician","internet","electric","wifi issue"],
+"answer":"Technician\nVinay Nangare\nHandles Internet and Electrical Support"
 },
 
-"administration": {
-"keywords": ["marksheet","document","student section","scholarship","accounts"],
-"answer": """
-Administration Office
-
-Student Section – Samrat Sir  
-Admission – Salunke Sir  
-Scholarship – Wadkar Sir  
-Accounts – Santosh Sir, Raju Sir
-"""
+"wifi":{
+"keywords":["wifi","internet access"],
+"answer":"WiFi Access Instructions:\nVisit http://172.0.0.1\nUse your mobile number as both username and password."
 },
 
-"itesa": {
-"keywords": ["itesa","club","it department"],
-"answer": "IT Department Student Club\nITESA\nInstagram: https://www.instagram.com/itesa.dyp/"
+"library":{
+"keywords":["library","reading room"],
+"answer":"Library Location:\nD Building\n2nd Floor"
 },
 
-"contact": {
-"keywords": ["contact","phone","college number"],
-"answer": """
-D Y Patil College of Engineering
-Sector 29 Nigdi Pradhikaran
-Akurdi Pune 411044
+"sports":{
+"keywords":["sports","ground"],
+"answer":"Sports Department\nLocation: A Building Entrance Ground Floor\nOfficer: Dr Abhaji Mane Sir"
+},
 
-Reception
-020-27653054 / 020-27653058
+"administration":{
+"keywords":["administration","student section","marksheet","scholarship","accounts"],
+"answer":"Administration Office\n\nStudent Section (documents / marksheet)\nSamrat Sir\n\nAdmission\nSalunke Sir\n\nScholarship\nWadkar Sir\n\nAccounts (fees)\nSantosh Sir\nRaju Sir"
+},
 
-Website
-https://www.dypcoeakurdi.ac.in/
-"""
+"admission":{
+"keywords":["admission","admission contact"],
+"answer":"Admission Incharge\nDr K T Jadhav\n\nAdmission Contact Numbers:\n9373775038\n9607957618\n9075345011\n9158195999\n8208018509\n9607957620"
+},
+
+"erp":{
+"keywords":["erp","attendance","assignment","fees","bonafide","lc","hostel","syllabus"],
+"answer":"ERP Portal\nhttps://erp.dypakurdipune.edu.in/\n\nUse ERP for:\nAttendance\nAssignments\nFees\nBonafide\nLC\nHostel\nSyllabus"
+},
+
+"results":{
+"keywords":["result","exam","sppu"],
+"answer":"SPPU Result Portal\nhttps://sim.unipune.ac.in/SIM_APP/"
+},
+
+"itesa":{
+"keywords":["itesa","club"],
+"answer":"IT Department Student Club\nITESA\nInstagram:\nhttps://www.instagram.com/itesa.dyp/"
+},
+
+"grievance":{
+"keywords":["grievance","complaint"],
+"answer":"Grievance Redressal Committee\nChairperson: Dr P Malathi\nContact: 9823152302"
+},
+
+"transport":{
+"keywords":["bus","transport"],
+"answer":"College does not provide bus transport."
+},
+
+"website":{
+"keywords":["website","college website"],
+"answer":"College Website\nhttps://www.dypcoeakurdi.ac.in/"
 }
 
 }
 
 
-# ---------------------------
+# ----------------------------
 # TIMETABLE FUNCTION
-# ---------------------------
+# ----------------------------
 
 def get_timetable(day, class_div):
 
@@ -115,25 +138,25 @@ def get_timetable(day, class_div):
     if "DAY/Time" not in df.columns:
         return "Timetable format incorrect."
 
-    row = df[df["DAY/Time"].str.lower() == day]
+    row = df[df["DAY/Time"].str.lower()==day]
 
     if row.empty:
         return f"No classes on {day}."
 
     row = row.iloc[0].dropna()
 
-    reply = f"📅 {day.upper()} TIMETABLE ({class_div.upper()})\n\n"
+    reply = f"{day.upper()} TIMETABLE ({class_div.upper()})\n\n"
 
-    for time, subject in row.items():
-        if time != "DAY/Time":
+    for time,subject in row.items():
+        if time!="DAY/Time":
             reply += f"{time} → {subject}\n"
 
     return reply
 
 
-# ---------------------------
-# SEARCH COLLEGE INFO
-# ---------------------------
+# ----------------------------
+# SEARCH FUNCTION
+# ----------------------------
 
 def search_info(user_input):
 
@@ -147,35 +170,22 @@ def search_info(user_input):
     return None
 
 
-# ---------------------------
+# ----------------------------
 # STREAMLIT UI
-# ---------------------------
+# ----------------------------
 
-st.set_page_config(page_title="IT Genie", page_icon="🤖")
+st.set_page_config(page_title="IT Genie",page_icon="🤖")
 
 st.title("🤖 IT Genie Chatbot")
 
-st.caption("Ask about timetable or college information.")
+st.caption("Ask about timetable or college information")
 
 
-# ---------------------------
-# CHAT HISTORY
-# ---------------------------
-
+# Chat history
 if "messages" not in st.session_state:
-    st.session_state.messages = [{
-        "role": "assistant",
-        "content":
-"""Hello! I can help you with:
-
-• Timetable (example: monday te a)
-• Library
-• Doctor
-• ERP portal
-• Placements
-• Sports
-• Administration
-"""
+    st.session_state.messages=[{
+        "role":"assistant",
+        "content":"Hello! Ask about timetable (example: monday te a), library, ERP, placements, WiFi or doctor."
     }]
 
 
@@ -184,33 +194,26 @@ for msg in st.session_state.messages:
         st.markdown(msg["content"])
 
 
-# ---------------------------
-# QUICK BUTTONS
-# ---------------------------
-
+# Quick buttons
 col1,col2,col3,col4 = st.columns(4)
 
 quick=None
 
-if col1.button("📚 Library"):
+if col1.button("Library"):
     quick="library"
 
-if col2.button("💼 Placement"):
+if col2.button("Placement"):
     quick="placement"
 
-if col3.button("🏫 IT Dept"):
-    quick="itesa"
+if col3.button("WiFi"):
+    quick="wifi"
 
-if col4.button("🩺 Doctor"):
+if col4.button("Doctor"):
     quick="doctor"
 
 
-# ---------------------------
-# INPUT
-# ---------------------------
-
-typed = st.chat_input("Type your question...")
-
+# User input
+typed = st.chat_input("Ask something...")
 prompt = typed or quick
 
 
@@ -225,12 +228,10 @@ if prompt:
 
     response=None
 
-
-    # SEARCH COLLEGE INFO
+    # Search college information
     response = search_info(user_input)
 
-
-    # TIMETABLE DETECTION
+    # Timetable detection
     if not response:
 
         found_day=None
@@ -247,25 +248,11 @@ if prompt:
         if found_day and found_class:
             response=get_timetable(found_day,found_class)
 
-
-    # DEFAULT MESSAGE
+    # Default response
     if not response:
-        response = """
-I didn't understand.
-
-Try asking:
-• monday te a
-• library
-• ERP
-• placement
-• doctor
-"""
-
+        response="Try asking: monday te a, library, ERP, placement, WiFi, doctor."
 
     with st.chat_message("assistant"):
         st.markdown(response)
 
-    st.session_state.messages.append({
-        "role":"assistant",
-        "content":response
-    })
+    st.session_state.messages.append({"role":"assistant","content":response})
