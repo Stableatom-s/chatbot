@@ -32,10 +32,9 @@ college_info = {
 ### 🎓 Principal
 
 Dr. Mrs. P. Malathi  
-Principal
+Principal  
 
-📧 Email  
-principal@dypcoeakurdi.ac.in
+📧 principal@dypcoeakurdi.ac.in
 """
 },
 
@@ -46,20 +45,18 @@ principal@dypcoeakurdi.ac.in
 
 Dr. S. S. Sarnobat  
 
-📧 Email  
-dean_admin@dypcoeakurdi.ac.in
+📧 dean_admin@dypcoeakurdi.ac.in
 """
 },
 
 "academic":{
-"keywords":["academic","coordinator","dean academics","autonomy"],
+"keywords":["academic","dean academics","autonomy"],
 "answer":"""
 ### 🎓 Dean Academics & Autonomy
 
 Dr. Preeti Patil  
 
-📧 Email  
-dean_academics@dypcoeakurdi.ac.in
+📧 dean_academics@dypcoeakurdi.ac.in
 
 Academic Coordinator  
 Mrs. Shantiguru Madam
@@ -74,8 +71,7 @@ Mrs. Shantiguru Madam
 Training & Placement Officer  
 Shashi Kant Sharma  
 
-📧 Email  
-tpo@dypcoeakurdi.ac.in
+📧 tpo@dypcoeakurdi.ac.in
 
 Placement Coordinator  
 Shital Borse Madam
@@ -83,17 +79,15 @@ Shital Borse Madam
 },
 
 "doctor":{
-"keywords":["doctor","medical","clinic"],
+"keywords":["doctor","medical"],
 "answer":"""
 ### 🏥 College Doctor
 
 Dr. Sheetal S Agale  
 
-📞 Phone  
-9594907410  
+📞 9594907410  
 
-🕒 Available  
-9:45 AM – 4:45 PM
+🕒 9:45 AM – 4:45 PM
 """
 },
 
@@ -102,20 +96,20 @@ Dr. Sheetal S Agale
 "answer":"""
 ### 💻 IT Department Labs
 
-### 🔹 Software Lab (FPL Lab)
+### Software Lab (FPL Lab)
 Assistants
 - Priyanka Padval
 - Priyanka Patil
 
-### 🔹 Database Engineering Lab (Vertusa Lab)
+### Database Engineering Lab (Vertusa Lab)
 Assistant
 - Nilam Shinde
 
-### 🔹 Centre of Excellence Lab
+### Centre of Excellence Lab
 Assistant
 - Manoj Patode
 
-### 🔹 Data Science Lab
+### Data Science Lab
 Assistant
 - Manoj Patode
 """
@@ -123,20 +117,12 @@ Assistant
 
 "nba":{
 "keywords":["nba"],
-"answer":"""
-### 🏅 NBA Coordinator
-
-Amita Madam
-"""
+"answer":"### 🏅 NBA Coordinator\nAmita Madam"
 },
 
 "alumni":{
 "keywords":["alumni"],
-"answer":"""
-### 👥 Alumni Coordinator
-
-Amita Madam
-"""
+"answer":"### 👥 Alumni Coordinator\nAmita Madam"
 },
 
 "technician":{
@@ -146,9 +132,7 @@ Amita Madam
 
 Vinay Nangare  
 
-Handles:
-- Internet issues
-- Electrical issues
+Handles Internet & Electrical issues
 """
 },
 
@@ -161,13 +145,13 @@ Handles:
 http://172.0.0.1
 
 2. Login using  
-Username: Your Mobile Number  
-Password: Your Mobile Number
+Username: Mobile Number  
+Password: Mobile Number
 """
 },
 
 "library":{
-"keywords":["library","reading room"],
+"keywords":["library"],
 "answer":"""
 ### 📚 Library
 
@@ -178,13 +162,13 @@ D Building
 },
 
 "sports":{
-"keywords":["sports","ground"],
+"keywords":["sports"],
 "answer":"""
 ### 🏀 Sports Department
 
 Location  
 A Building Entrance  
-Ground Floor
+Ground Floor  
 
 Officer  
 Dr. Abhaji Mane Sir
@@ -205,19 +189,19 @@ Salunke Sir
 Scholarship  
 Wadkar Sir  
 
-Accounts (Fees Related)  
+Accounts  
 Santosh Sir  
 Raju Sir
 """
 },
 
 "admission":{
-"keywords":["admission","admission contact"],
+"keywords":["admission"],
 "answer":"""
 ### 📞 Admission Department
 
 Admission Incharge  
-Dr. K. T. Jadhav  
+Dr. K. T. Jadhav
 
 Contact Numbers
 - 9373775038
@@ -230,7 +214,7 @@ Contact Numbers
 },
 
 "erp":{
-"keywords":["erp","attendance","assignment","fees","bonafide","lc","hostel","syllabus"],
+"keywords":["erp","attendance","assignment","fees","bonafide","lc","hostel"],
 "answer":"""
 ### 🖥 ERP Portal
 
@@ -243,7 +227,6 @@ Use ERP for:
 - Bonafide Certificate
 - Leaving Certificate
 - Hostel Information
-- Syllabus
 """
 },
 
@@ -261,7 +244,6 @@ https://sim.unipune.ac.in/SIM_APP/
 "answer":"""
 ### 🎓 ITESA Student Club
 
-Instagram  
 https://www.instagram.com/itesa.dyp/
 """
 },
@@ -274,27 +256,18 @@ https://www.instagram.com/itesa.dyp/
 Chairperson  
 Dr. P. Malathi  
 
-📞 Contact  
-9823152302
+📞 9823152302
 """
 },
 
 "transport":{
 "keywords":["bus","transport"],
-"answer":"""
-### 🚌 Transport
-
-College does **not provide bus transport**.
-"""
+"answer":"### 🚌 Transport\nCollege does **not provide bus transport**."
 },
 
 "website":{
 "keywords":["website","college website"],
-"answer":"""
-### 🌐 College Website
-
-https://www.dypcoeakurdi.ac.in/
-"""
+"answer":"### 🌐 College Website\nhttps://www.dypcoeakurdi.ac.in/"
 }
 
 }
@@ -316,13 +289,10 @@ def get_timetable(day, class_div):
 
     df = pd.read_csv(csv_file)
 
-    if "DAY/Time" not in df.columns:
-        return "Timetable format incorrect."
-
     row = df[df["DAY/Time"].str.lower()==day]
 
     if row.empty:
-        return f"No classes on {day}."
+        return f"No classes on {day}"
 
     row = row.iloc[0].dropna()
 
@@ -363,35 +333,20 @@ st.caption("Assistant for IT Department – D Y Patil College of Engineering Aku
 st.subheader("What information you can ask")
 
 st.markdown("""
-### 📚 College Information
 • Principal  
 • Dean Administration  
 • Dean Academics  
-• Library location  
-• IT Department labs  
-
-### 🏫 Student Services
+• Library  
 • ERP portal  
-• SPPU results portal  
-
-### 👨‍💼 Administration
-• Student section  
-• Admission office  
-• Scholarship office  
-• Accounts  
-
-### 🏥 Campus Facilities
-• College doctor  
-• WiFi access  
-• Technician support  
-• Sports department  
-
-### 🎓 Department Activities
-• ITESA student club  
-• Alumni coordinator  
-• NBA coordinator  
+• Placement  
+• Doctor  
+• WiFi  
+• Sports  
+• Admission  
+• IT Department Labs  
 
 ### 📅 Timetable
+
 Type like:
 
 `monday te a`
@@ -435,6 +390,22 @@ if prompt:
 
     response = search_info(user_input)
 
+
+    # TIMETABLE HELP CASE
+
+    if not response and ("timetable" in user_input or "time table" in user_input or "schedule" in user_input):
+
+        response="""
+### 📅 Timetable
+
+To check timetable type like:
+
+monday te a  
+tuesday se b  
+wednesday be a
+"""
+
+
     if not response:
 
         found_day=None
@@ -451,8 +422,10 @@ if prompt:
         if found_day and found_class:
             response=get_timetable(found_day,found_class)
 
+
     if not response:
-        response="Try asking: principal, monday te a, library, ERP, placement, WiFi, doctor."
+        response="Try asking: timetable, monday te a, principal, library, ERP, WiFi."
+
 
     with st.chat_message("assistant"):
         st.markdown(response)
