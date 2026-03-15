@@ -237,9 +237,14 @@ https://sim.unipune.ac.in/SIM_APP/
 },
 
 "itesa":{
-"keywords":["itesa","club"],
+"keywords":["itesa","club","itesa president"],
 "answer":"""
-### 🎓 ITESA Student Club
+### 🎓 ITESA – IT Department Student Association
+
+President  
+Madam President Shrushtii with TEA ☕
+
+Instagram  
 https://www.instagram.com/itesa.dyp/
 """
 },
