@@ -30,32 +30,25 @@ college_info = {
 "keywords":["principal"],
 "answer":"""
 ### 🎓 Principal
-
 Dr. Mrs. P. Malathi  
-Principal  
-
 📧 principal@dypcoeakurdi.ac.in
 """
 },
 
 "dean_admin":{
-"keywords":["dean administration","administration dean"],
+"keywords":["dean administration"],
 "answer":"""
 ### 🏢 Dean Administration
-
 Dr. S. S. Sarnobat  
-
 📧 dean_admin@dypcoeakurdi.ac.in
 """
 },
 
 "academic":{
-"keywords":["academic","dean academics","autonomy"],
+"keywords":["dean academics","academic","autonomy"],
 "answer":"""
 ### 🎓 Dean Academics & Autonomy
-
 Dr. Preeti Patil  
-
 📧 dean_academics@dypcoeakurdi.ac.in
 
 Academic Coordinator  
@@ -64,13 +57,12 @@ Mrs. Shantiguru Madam
 },
 
 "placement":{
-"keywords":["placement","tpo","placement officer","job"],
+"keywords":["placement","tpo","placement officer"],
 "answer":"""
 ### 💼 Training & Placement Cell
 
 Training & Placement Officer  
 Shashi Kant Sharma  
-
 📧 tpo@dypcoeakurdi.ac.in
 
 Placement Coordinator  
@@ -84,33 +76,31 @@ Shital Borse Madam
 ### 🏥 College Doctor
 
 Dr. Sheetal S Agale  
-
 📞 9594907410  
-
 🕒 9:45 AM – 4:45 PM
 """
 },
 
 "labs":{
-"keywords":["lab","labs","software lab","fpl","database lab","vertusa","data science lab"],
+"keywords":["lab","software lab","fpl","virtusa","database lab","data science lab"],
 "answer":"""
 ### 💻 IT Department Labs
 
-### Software Lab (FPL Lab)
-Assistants
-- Priyanka Padval
-- Priyanka Patil
+Software Lab (FPL Lab)  
+Assistants  
+- Priyanka Padval  
+- Priyanka Patil  
 
-### Database Engineering Lab (Vertusa Lab)
-Assistant
-- Nilam Shinde
+Database Engineering Lab (Virtusa Lab)  
+Assistant  
+- Nilam Shinde  
 
-### Centre of Excellence Lab
-Assistant
-- Manoj Patode
+Centre of Excellence Lab  
+Assistant  
+- Manoj Patode  
 
-### Data Science Lab
-Assistant
+Data Science Lab  
+Assistant  
 - Manoj Patode
 """
 },
@@ -129,10 +119,8 @@ Assistant
 "keywords":["technician","internet issue","electric"],
 "answer":"""
 ### 🔧 Technical Support
-
 Vinay Nangare  
-
-Handles Internet & Electrical issues
+Handles Internet & Electrical Issues
 """
 },
 
@@ -141,23 +129,35 @@ Handles Internet & Electrical issues
 "answer":"""
 ### 📶 WiFi Access Instructions
 
-1. Visit  
+Visit  
 http://172.0.0.1
 
-2. Login using  
+Login using  
 Username: Mobile Number  
 Password: Mobile Number
 """
 },
 
 "library":{
-"keywords":["library"],
+"keywords":["library","central library"],
 "answer":"""
-### 📚 Library
+### 📚 Central Library
 
 Location  
-D Building  
-2nd Floor
+D Building – 2nd Floor
+
+Library Website  
+https://sites.google.com/a/dypcoeakurdi.ac.in/dypcoe-central-Library/
+"""
+},
+
+"reading_room":{
+"keywords":["reading room","study room"],
+"answer":"""
+### 📖 Reading Room
+
+Location  
+D Building – 3rd Floor
 """
 },
 
@@ -167,8 +167,7 @@ D Building
 ### 🏀 Sports Department
 
 Location  
-A Building Entrance  
-Ground Floor  
+A Building Entrance – Ground Floor
 
 Officer  
 Dr. Abhaji Mane Sir
@@ -217,10 +216,9 @@ Contact Numbers
 "keywords":["erp","attendance","assignment","fees","bonafide","lc","hostel"],
 "answer":"""
 ### 🖥 ERP Portal
-
 https://erp.dypakurdipune.edu.in/
 
-Use ERP for:
+Use ERP for
 - Attendance
 - Assignments
 - Fees
@@ -234,7 +232,6 @@ Use ERP for:
 "keywords":["result","exam","sppu"],
 "answer":"""
 ### 📊 SPPU Results
-
 https://sim.unipune.ac.in/SIM_APP/
 """
 },
@@ -243,7 +240,6 @@ https://sim.unipune.ac.in/SIM_APP/
 "keywords":["itesa","club"],
 "answer":"""
 ### 🎓 ITESA Student Club
-
 https://www.instagram.com/itesa.dyp/
 """
 },
@@ -255,14 +251,13 @@ https://www.instagram.com/itesa.dyp/
 
 Chairperson  
 Dr. P. Malathi  
-
 📞 9823152302
 """
 },
 
 "transport":{
 "keywords":["bus","transport"],
-"answer":"### 🚌 Transport\nCollege does **not provide bus transport**."
+"answer":"### 🚌 Transport\nCollege does not provide bus transport."
 },
 
 "website":{
@@ -333,25 +328,24 @@ st.caption("Assistant for IT Department – D Y Patil College of Engineering Aku
 st.subheader("What information you can ask")
 
 st.markdown("""
-• Principal  
-• Dean Administration  
-• Dean Academics  
-• Library  
-• ERP portal  
-• Placement  
-• Doctor  
-• WiFi  
-• Sports  
-• Admission  
-• IT Department Labs  
+Principal  
+Dean Administration  
+Dean Academics  
+Library  
+Reading Room  
+ERP Portal  
+Placement  
+Doctor  
+WiFi  
+Sports  
+Admission  
+IT Department Labs  
 
 ### 📅 Timetable
+Type:
 
-Type like:
-
-`monday te a`
-
-`wednesday se b`
+monday te a  
+wednesday se b
 """)
 
 
@@ -391,14 +385,14 @@ if prompt:
     response = search_info(user_input)
 
 
-    # TIMETABLE HELP CASE
+    # TIMETABLE HELP
 
-    if not response and ("timetable" in user_input or "time table" in user_input or "schedule" in user_input):
+    if not response and ("timetable" in user_input or "schedule" in user_input):
 
         response="""
 ### 📅 Timetable
 
-To check timetable type like:
+To check timetable type:
 
 monday te a  
 tuesday se b  
