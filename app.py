@@ -26,6 +26,21 @@ timetables = {
 
 college_info = {
 
+"cute":{
+"keywords":["cute"],
+"answer":"Thank you 😊"
+},
+
+"appreciation":{
+"keywords":["thank you","thanks","nice bot","good bot"],
+"answer":"""
+😊 You're welcome!
+
+I'm happy to help.  
+Feel free to ask about timetable, ERP, labs, placements or facilities.
+"""
+},
+
 "principal":{
 "keywords":["principal"],
 "answer":"""
@@ -87,20 +102,20 @@ Dr. Sheetal S Agale
 ### 💻 IT Department Labs
 
 Software Lab (FPL Lab)  
-Assistants  
+Assistants
 - Priyanka Padval  
 - Priyanka Patil  
 
 Database Engineering Lab (Virtusa Lab)  
-Assistant  
+Assistant
 - Nilam Shinde  
 
 Centre of Excellence Lab  
-Assistant  
+Assistant
 - Manoj Patode  
 
 Data Science Lab  
-Assistant  
+Assistant
 - Manoj Patode
 """
 },
@@ -125,7 +140,7 @@ Handles Internet & Electrical Issues
 },
 
 "wifi":{
-"keywords":["wifi","internet access"],
+"keywords":["wifi","internet"],
 "answer":"""
 ### 📶 WiFi Access Instructions
 
@@ -239,9 +254,10 @@ https://sim.unipune.ac.in/SIM_APP/
 "itesa":{
 "keywords":["itesa","club","itesa president"],
 "answer":"""
-### 🎓 ITESA – Information Technology Engineering Student’s Association
+### 🎓 ITESA – IT Department Student Association
+
 President  
-Madam President Shrushti Handal
+Madam President Shrushtii with TEA ☕
 
 Instagram  
 https://www.instagram.com/itesa.dyp/
@@ -388,8 +404,6 @@ if prompt:
 
     response = search_info(user_input)
 
-
-    # TIMETABLE HELP
 
     if not response and ("timetable" in user_input or "schedule" in user_input):
 
